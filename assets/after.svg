@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#070a14"/>
+      <stop offset="1" stop-color="#020306"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3dff7a" stop-opacity="0.55"/>
+      <stop offset="0.25" stop-color="#3dff7a" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#3dff7a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="spill" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3dff7a" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#3dff7a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2f3a"/>
+      <stop offset="1" stop-color="#13161d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#night)"/>
+
+  <!-- stars -->
+  <g fill="#ffffff">
+    <circle cx="640" cy="70" r="1.2" opacity="0.5"/>
+    <circle cx="890" cy="120" r="1" opacity="0.35"/>
+    <circle cx="1130" cy="60" r="1.4" opacity="0.45"/>
+    <circle cx="1210" cy="170" r="1" opacity="0.3"/>
+    <circle cx="760" cy="190" r="0.9" opacity="0.3"/>
+    <circle cx="1020" cy="210" r="1.1" opacity="0.25"/>
+    <circle cx="560" cy="40" r="1" opacity="0.3"/>
+  </g>
+
+  <!-- the glow that ruins the room -->
+
+  <!-- nightstand -->
+  <rect x="560" y="480" width="720" height="4" fill="#1a1e27"/>
+  <rect x="560" y="484" width="720" height="156" fill="#07090e"/>
+
+  <!-- closed MacBook -->
+  <rect x="772" y="456" width="440" height="24" rx="6" fill="url(#lid)"/>
+  <rect x="780" y="458" width="424" height="2" rx="1" fill="#3a4050" opacity="0.6"/>
+
+  <!-- MagSafe cable + connector -->
+  <path d="M752 468 C 700 468, 676 478, 672 640" stroke="#c9ccd3" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.75"/>
+  <rect x="748" y="461" width="26" height="14" rx="4" fill="#d6d9df"/>
+  <circle cx="752" cy="468" r="3.4" fill="#7c828c"/>
+
+  <!-- copy -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif">
+    <text x="80" y="150" fill="#5b6475" font-size="22" font-family="'SF Mono', Menlo, monospace" letter-spacing="2">2:07 AM</text>
+    <text x="80" y="232" fill="#f5f7fb" font-size="64" font-weight="700" letter-spacing="-1.5">Lights off.</text>
+    <text x="80" y="308" fill="#f5f7fb" font-size="64" font-weight="700" letter-spacing="-1.5">Mac asleep.</text>
+    <text x="80" y="384" fill="#8a93a6" font-size="64" font-weight="700" letter-spacing="-1.5">Finally dark.</text>
+
+    <text x="80" y="540" fill="#f5f7fb" font-size="34" font-weight="700" letter-spacing="-0.5">Glowless</text>
+    <text x="80" y="576" fill="#8a93a6" font-size="22">Turn off the MagSafe light. For good.</text>
+  </g>
+</svg>

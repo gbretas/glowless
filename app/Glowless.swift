@@ -53,6 +53,7 @@ struct SettingsView: View {
             Text("Também fica na barra de menu. Se o ícone sumir, abra pelo Spotlight.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .padding(24)
         .frame(width: 340)

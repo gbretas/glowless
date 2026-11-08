@@ -1,14 +1,14 @@
-APP = build/MagSafeLED.app
+APP = build/Glowless.app
 
-all: build/magsafeledd $(APP)
+all: build/glowlessd $(APP)
 
-build/magsafeledd: daemon/magsafeledd.c
+build/glowlessd: daemon/glowlessd.c
 	mkdir -p build
 	clang -O2 -framework IOKit -o $@ $<
 
-$(APP): app/MagSafeLED.swift app/Info.plist
+$(APP): app/Glowless.swift app/Info.plist
 	mkdir -p $(APP)/Contents/MacOS
-	swiftc -O -o $(APP)/Contents/MacOS/MagSafeLED app/MagSafeLED.swift
+	swiftc -O -o $(APP)/Contents/MacOS/Glowless app/Glowless.swift
 	cp app/Info.plist $(APP)/Contents/
 	codesign --force -s - $(APP)
 

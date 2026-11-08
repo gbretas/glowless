@@ -3,14 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.magsafeled.daemon</string>
+    <string>com.glowless.app</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/local/bin/magsafeledd</string>
+        <string>/Applications/Glowless.app/Contents/MacOS/Glowless</string>
+        <string>--background</string>
     </array>
     <key>RunAtLoad</key>
-    <true/>
-    <key>KeepAlive</key>
     <true/>
 </dict>
 </plist>

@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleName</key>
-    <string>MagSafeLED</string>
+    <string>Glowless</string>
     <key>CFBundleIdentifier</key>
-    <string>com.magsafeled.app</string>
+    <string>com.glowless.app</string>
     <key>CFBundleExecutable</key>
-    <string>MagSafeLED</string>
+    <string>Glowless</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
     <string>0.1.0</string>
     <key>LSMinimumSystemVersion</key>
-    <string>12.0</string>
+    <string>13.0</string>
     <key>LSUIElement</key>
     <true/>
 </dict>

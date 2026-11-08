@@ -1,38 +1,43 @@
-# MagSafe LED
+# Glowless
 
-Turn off the green/orange light on your MacBook's MagSafe connector, or lock it to one color. It runs from the menu bar.
+**Turn off the MagSafe light.** Sleep in the dark, stop the green dot from staring at you during a movie, or lock it to the color you like.
 
-macOS has no setting for this. The LED is driven by the SMC key `ACLC`, and macOS takes it back on every replug, charge change and reboot. A small root daemon puts your choice back every 2 seconds.
+Glowless lives in your menu bar and in Spotlight (⌘ + Space → *Glowless*). Pick a mode once and it stays that way after replugging, charge changes and reboots.
+
+| Mode | LED |
+|------|-----|
+| Apagada | off |
+| Padrão do sistema | stock macOS behavior |
+| Sempre verde | always green |
+| Sempre laranja | always orange |
 
 ## Install
 
-Requires Apple Silicon and the Xcode Command Line Tools (`xcode-select --install`).
+Requires an Apple Silicon MacBook with MagSafe, macOS 13+, and the Xcode Command Line Tools (`xcode-select --install`).
 
 ```sh
-git clone https://github.com/gbretas/magsafe-led
-cd magsafe-led
+git clone https://github.com/gbretas/glowless
+cd glowless
 ./install.sh
 ```
 
-A bolt icon shows up in the menu bar. Pick one of:
+It asks for your password once, to install the background service that talks to the hardware.
 
-- **Apagada**: LED off
-- **Padrão do sistema**: macOS decides, same as stock
-- **Sempre verde** / **Sempre laranja**: forced color
+## Why it needs a background service
 
-## How it works
+macOS has no setting for the MagSafe LED. The light is driven by the SMC key `ACLC`, and macOS takes it back every time you plug in, the charge state changes or the Mac restarts. `glowlessd` runs as root and puts your choice back every 2 seconds.
 
 | Part | What it does |
 |------|--------------|
-| `daemon/magsafeledd.c` | Runs as root via launchd. Reads `/Users/Shared/MagSafeLED/mode` and writes `ACLC` over IOKit. |
-| `app/MagSafeLED.swift` | Menu bar app. Writes the chosen mode to that file. |
+| `daemon/glowlessd.c` | Root launchd daemon. Reads `/Users/Shared/Glowless/mode`, writes `ACLC` over IOKit. |
+| `app/Glowless.swift` | Menu bar app and settings window. Writes the chosen mode to that file. |
 
 `ACLC` values: `0` system, `1` off, `3` green, `4` orange.
 
-Without the app, from the terminal:
+You can skip the app entirely:
 
 ```sh
-echo off > /Users/Shared/MagSafeLED/mode
+echo off > /Users/Shared/Glowless/mode
 ```
 
 ## Uninstall
@@ -43,7 +48,7 @@ echo off > /Users/Shared/MagSafeLED/mode
 
 ## Disclaimer
 
-This writes to the SMC, which Apple does not document. It only touches the LED key, but use it at your own risk.
+Glowless writes to the SMC, which Apple does not document. It only touches the LED key, but use it at your own risk.
 
 ## License
 

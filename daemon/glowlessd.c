@@ -1,11 +1,11 @@
-// magsafeledd: keeps the MagSafe LED in the mode chosen in MODE_FILE.
+// glowlessd: keeps the MagSafe LED in the mode chosen in MODE_FILE.
 // Runs as root (writing SMC keys requires it). Build: clang -framework IOKit
 #include <IOKit/IOKitLib.h>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 
-#define MODE_FILE "/Users/Shared/MagSafeLED/mode"
+#define MODE_FILE "/Users/Shared/Glowless/mode"
 #define KERNEL_INDEX_SMC 2
 #define SMC_CMD_READ_KEYINFO 9
 #define SMC_CMD_WRITE_BYTES 6
@@ -76,7 +76,7 @@ static int read_mode(void) {
 int main(void) {
     io_service_t svc = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("AppleSMC"));
     if (!svc || IOServiceOpen(svc, mach_task_self(), 0, &conn) != kIOReturnSuccess) {
-        fprintf(stderr, "magsafeledd: cannot open AppleSMC\n");
+        fprintf(stderr, "glowlessd: cannot open AppleSMC\n");
         return 1;
     }
     IOObjectRelease(svc);
@@ -87,7 +87,7 @@ int main(void) {
         // macOS re-takes the LED on plug/unplug and charge changes, so forced modes are re-applied
         // every tick. ponytail: 2s polling, swap for IOPS power-source notifications if it ever matters.
         if (mode != 0 || last != 0) {
-            if (smc_write_u8("ACLC", (unsigned char)mode) != 0) fprintf(stderr, "magsafeledd: write failed\n");
+            if (smc_write_u8("ACLC", (unsigned char)mode) != 0) fprintf(stderr, "glowlessd: write failed\n");
         }
         last = mode;
         sleep(2);

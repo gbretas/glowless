@@ -67,6 +67,8 @@ The MagSafe LED is driven by the SMC key `ACLC` (`0` system, `1` off, `3` green,
 | `daemon/glowlessd.c` | Root launchd daemon. Reads `/Users/Shared/Glowless/mode` and rewrites `ACLC` every 2 seconds over IOKit. |
 | `app/Glowless.swift` | Menu bar app + settings window. Writes the chosen mode to that file. |
 
+Works while macOS is on or asleep. With the Mac fully shut down nothing can rewrite the key, so plugging in then shows the LED until you boot. Shutting down while already plugged in keeps it dark.
+
 No app needed if you prefer the terminal:
 
 ```sh
